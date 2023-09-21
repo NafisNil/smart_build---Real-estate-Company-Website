@@ -125,6 +125,17 @@
               </p>
             </a>
           </li>
+
+
+          <li class="nav-item">
+            <a href="{{route('social.index')}}" class="nav-link {{$route == 'social.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Social Media
+               
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

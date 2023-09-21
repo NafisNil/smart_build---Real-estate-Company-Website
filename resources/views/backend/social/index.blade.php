@@ -1,6 +1,6 @@
 @extends('backend.layout.master')
 @section('title')
-    Address - Index
+    Social Media - Index
 @endsection
 @section('content')
 
@@ -8,12 +8,12 @@
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6 offset-3">
-            <h1>Address</h1>
+            <h1>Social Media</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Address</li>
+              <li class="breadcrumb-item active">Social Media</li>
             </ol>
           </div>
         </div>
@@ -27,10 +27,10 @@
           <!-- left column -->
              <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Address </h3>
-             @if ($addressCount < 1)
+                <h3 class="card-title">Social Media </h3>
+             @if ($socialCount < 1)
       
-                <a href="{{route('address.create')}}" class="float-right btn btn-outline-dark btn-sm mb-2"><i class="fas fa-plus-square"></i></a>
+                <a href="{{route('social.create')}}" class="float-right btn btn-outline-dark btn-sm mb-2"><i class="fas fa-plus-square"></i></a>
                       
                      
                 @endif
@@ -42,10 +42,10 @@
                   <thead>
                   <tr>
                     <th>#</th>
-                    <th>Address</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                 
+                    <th>Facebook</th>
+                    <th>Instagram</th>
+                    <th>Twitter</th>
+                    <th>Youtube</th>
                   
                     <th>Action</th>
                    
@@ -62,18 +62,19 @@
                  
                   <tr>
                     <td>#1</td>
-                    <td>{!!@$address->address!!}</td>
-                    <td>{!!@$address->email!!}</td>
-                    <td>{!!@$address->phone!!}</td>
+                    <td><a href="{!!@$social->facebook!!}">{!!@$social->facebook!!}</a></td>
+                    <td><a href="{!!@$social->instagram!!}">{!!@$social->instagram!!}</a></td>
+                    <td><a href="{!!@$social->twitter!!}">{!!@$social->twitter!!}</a></td>
+                    <td><a href="{!!@$social->youtube!!}">{!!@$social->youtube!!}</a></td>
                    
                    <td>
                   
-               @if ($addressCount > 0)
+               @if ($socialCount > 0)
                    
             
-                      <a href="{{route('address.edit',[$address])}}"><button class="btn btn-outline-info btn-sm"><i class="fas fa-pen-square"></i></button></a>
+                      <a href="{{route('social.edit',[$social])}}"><button class="btn btn-outline-info btn-sm"><i class="fas fa-pen-square"></i></button></a>
                     
-                      <form action="{{route('address.destroy',[$address])}}" method="POST">
+                      <form action="{{route('social.destroy',[$social])}}" method="POST">
                         @method('DELETE')
                         @csrf
                         <button class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i></button>
@@ -91,10 +92,10 @@
                   <tfoot>
                   <tr>
                     <th>#</th>
-                    <th>Address</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-               
+                    <th>Facebook</th>
+                    <th>Instagram</th>
+                    <th>Twitter</th>
+                    <th>Youtube</th>
                     <th>Action</th>
                   
                   </tr>

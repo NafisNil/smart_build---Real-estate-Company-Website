@@ -37,9 +37,13 @@ class AddressController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddressRequest $request)
     {
         //
+        $address = Address::create($request->all());
+       
+       
+        return redirect()->route('address.index')->with('success','Data inserted successfully');
     }
 
     /**
@@ -62,6 +66,9 @@ class AddressController extends Controller
     public function edit(Address $address)
     {
         //
+        return view('backend.address.edit',[
+            'edit' => $address
+        ]);
     }
 
     /**
@@ -71,9 +78,13 @@ class AddressController extends Controller
      * @param  \App\Models\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Address $address)
+    public function update(AddressRequest $request, Address $address)
     {
         //
+        $address->update($request->all());
+       
+       
+        return redirect()->route('address.index')->with('success','Data inserted successfully');
     }
 
     /**
@@ -85,5 +96,8 @@ class AddressController extends Controller
     public function destroy(Address $address)
     {
         //
+     
+        $address->delete();
+        return redirect()->route('address.index')->with('status','Data deleted successfully!');
     }
 }

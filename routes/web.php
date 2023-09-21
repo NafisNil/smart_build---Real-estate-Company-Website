@@ -8,6 +8,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\SocialController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,7 +43,8 @@ Route::middleware('auth')->group(function () {
         'service' => ServiceController::class,
         'gallery' => GalleryController::class,
         'blog' => BlogController::class,
-        'address' => AddressController::class
+        'address' => AddressController::class,
+        'social' => SocialController::class
     ]);
 });
 
