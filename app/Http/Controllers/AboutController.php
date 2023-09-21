@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Logo;
+use App\Models\About;
 use Illuminate\Http\Request;
-use App\Http\Requests\LogoRequest;
 use Image;
-class LogoController extends Controller
+use App\Http\Requests\AboutRequest;
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class LogoController extends Controller
     public function index()
     {
         //
-        $logo = Logo::orderBy('id', 'desc')->first();
-        $logoCount = Logo::count();
-         return view('backend.logo.index',['logo'=>$logo,'logoCount'=> $logoCount,]);
+        $about = About::orderBy('id', 'desc')->first();
+        $aboutCount = About::count();
+         return view('backend.about.index',['about'=>$about,'aboutCount'=> $aboutCount,]);
     }
 
     /**
@@ -29,7 +29,7 @@ class LogoController extends Controller
     public function create()
     {
         //
-        return view('backend.logo.create');
+        return view('backend.about.create');
     }
 
     /**
@@ -38,24 +38,24 @@ class LogoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(LogoRequest $request)
+    public function store(AboutRequest $request)
     {
         //
-        $logo = Logo::create($request->all());
+        $about = About::create($request->all());
        
         if ($request->hasFile('logo')) {
-            $this->_uploadImage($request, $logo);
+            $this->_uploadImage($request, $about);
         }
-        return redirect()->route('logo.index')->with('success','Data inserted successfully');
+        return redirect()->route('about.index')->with('success','Data inserted successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Logo  $logo
+     * @param  \App\Models\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function show(Logo $logo)
+    public function show(About $about)
     {
         //
     }
@@ -63,14 +63,14 @@ class LogoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Logo  $logo
+     * @param  \App\Models\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function edit(Logo $logo)
+    public function edit(About $about)
     {
         //
-        return view('backend.logo.edit',[
-            'edit' => $logo
+        return view('backend.about.edit',[
+            'edit' => $about
         ]);
     }
 
@@ -78,35 +78,35 @@ class LogoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Logo  $logo
+     * @param  \App\Models\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function update(LogoRequest $request, Logo $logo)
+    public function update(AboutRequest $request, About $about)
     {
         //
-        $logo->update($request->all());
+        $about->update($request->all());
        
         if ($request->hasFile('logo')) {
-            @unlink('storage/'.$logo->logo);
-            $this->_uploadImage($request, $logo);
+            @unlink('storage/'.$about->logo);
+            $this->_uploadImage($request, $about);
         }
-        return redirect()->route('logo.index')->with('success','Data inserted successfully');
+        return redirect()->route('about.index')->with('success','Data inserted successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Logo  $logo
+     * @param  \App\Models\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Logo $logo)
+    public function destroy(About $about)
     {
         //
-        if(!empty($logo->logo));
-        @unlink('storage/'.$logo->logo);
+        if(!empty($about->logo));
+        @unlink('storage/'.$about->logo);
        
-        $logo->delete();
-        return redirect()->route('logo.index')->with('status','Data deleted successfully!');
+        $about->delete();
+        return redirect()->route('about.index')->with('status','Data deleted successfully!');
     }
 
 
@@ -116,7 +116,7 @@ class LogoController extends Controller
         if( $request->hasFile('logo') ) {
             $image = $request->file('logo');
             $filename = time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(96, 64)->save('storage/' . $filename);
+            Image::make($image)->resize(650, 680)->save('storage/' . $filename);
             $about->logo = $filename;
             $about->save();
         }

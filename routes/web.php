@@ -3,6 +3,11 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogoController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\AddressController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +38,11 @@ Route::middleware('auth')->group(function () {
 
     Route::resources([
         'logo' => LogoController::class,
-      
+        'about' => AboutController::class,
+        'service' => ServiceController::class,
+        'gallery' => GalleryController::class,
+        'blog' => BlogController::class,
+        'address' => AddressController::class
     ]);
 });
 
