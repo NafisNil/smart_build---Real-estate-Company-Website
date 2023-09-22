@@ -37,9 +37,9 @@
                   <div class="form-group">
                     <label for="exampleInputEmail1">Type : <span style="color:red" >*</span></label>
                    
-                    <input type="radio" name="type" value="Image  " {{ ( "Male
+                    <input type="radio" name="type" value="Image  " {{ ( "Image
                     " == @$edit->type) ? 'selected' : '' }}"> Image
-            <input type="radio" name="type" value="Video" " {{ ( "Male
+            <input type="radio" name="type" value="Video" " {{ ( "Video
             " == @$edit->type) ? 'selected' : '' }}"> Video
                    
                   </div>

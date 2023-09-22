@@ -156,6 +156,17 @@
               </p>
             </a>
           </li>
+
+
+          <li class="nav-item">
+            <a href="{{route('project.index')}}" class="nav-link {{$route == 'project.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+              Project List
+               
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
