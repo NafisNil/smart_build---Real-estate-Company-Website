@@ -136,6 +136,26 @@
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="{{route('partner.index')}}" class="nav-link {{$route == 'partner.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+               Partner/ Client
+               
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('feedback.index')}}" class="nav-link {{$route == 'feedback.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+               Client Feedback 
+               
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

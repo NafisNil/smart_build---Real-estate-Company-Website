@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PartnerRequest extends FormRequest
+class FeedbackRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,9 @@ class PartnerRequest extends FormRequest
     {
         return [
             //
-            'logo' => 'mimes:jpg,png,svg,jpeg,webp',
-            'title' => 'required'
+            'name' => 'required',
+            'designation' => 'required',
+            'desc' => 'required'
         ];
     }
 }

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Partner;
 use Illuminate\Http\Request;
-
+use Image;
+use App\Http\Requests\PartnerRequest;
 class PartnerController extends Controller
 {
     /**
@@ -15,6 +16,9 @@ class PartnerController extends Controller
     public function index()
     {
         //
+        $partner = Partner::orderBy('id', 'desc')->get();
+        $partnerCount = Partner::count();
+         return view('backend.partner.index',['partner'=>$partner,'partnerCount'=> $partnerCount,]);
     }
 
     /**
@@ -25,6 +29,7 @@ class PartnerController extends Controller
     public function create()
     {
         //
+        return view('backend.partner.create');
     }
 
     /**
@@ -33,9 +38,15 @@ class PartnerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PartnerRequest $request)
     {
         //
+        $partner = Partner::create($request->all());
+       
+        if ($request->hasFile('logo')) {
+            $this->_uploadImage($request, $partner);
+        }
+        return redirect()->route('partner.index')->with('success','Data inserted successfully');
     }
 
     /**
@@ -58,6 +69,9 @@ class PartnerController extends Controller
     public function edit(Partner $partner)
     {
         //
+        return view('backend.partner.edit',[
+            'edit' => $partner
+        ]);
     }
 
     /**
@@ -67,9 +81,15 @@ class PartnerController extends Controller
      * @param  \App\Models\Partner  $partner
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Partner $partner)
+    public function update(PartnerRequest $request, Partner $partner)
     {
         //
+        $partner->update($request->all());
+        if ($request->hasFile('logo')) {
+            @unlink('storage/'.$partner->logo);
+            $this->_uploadImage($request, $partner);
+        }
+        return redirect()->route('partner.index')->with('success','Data inserted successfully');
     }
 
     /**
@@ -81,5 +101,23 @@ class PartnerController extends Controller
     public function destroy(Partner $partner)
     {
         //
+        if(!empty($partner->logo));
+        @unlink('storage/'.$partner->logo);
+       
+        $partner->delete();
+        return redirect()->route('pa$partner.index')->with('status','Data deleted successfully!');
+    }
+
+    private function _uploadImage($request, $about)
+    {
+        # code...
+        if( $request->hasFile('logo') ) {
+            $image = $request->file('logo');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(142, 124)->save('storage/' . $filename);
+            $about->logo = $filename;
+            $about->save();
+        }
+       
     }
 }

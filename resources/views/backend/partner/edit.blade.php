@@ -1,6 +1,6 @@
 @extends('backend.layout.master')
 @section('title')
-    About Us - Create
+    Partner/Client  - Edit
 @endsection
 @section('content')
 
@@ -8,12 +8,12 @@
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6 offset-3">
-            <h1>About Us Form</h1>
+            <h1>Partner/Client  Form</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">About Us  Form</li>
+              <li class="breadcrumb-item active">Partner/Client  Form</li>
             </ol>
           </div>
         </div>
@@ -29,13 +29,14 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">About Us  Form </h3>
+                <h3 class="card-title">Partner/Client </h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="{{route('about.store')}}" method="POST" enctype="multipart/form-data">
+              <form action="{{route('partner.update',[$edit])}}" method="POST" enctype="multipart/form-data">
                 @csrf
-              @include('backend.about.form')
+                @method('PUT')
+              @include('backend.partner.form')
                       </form>
             </div>
             <!-- /.card -->
@@ -51,5 +52,5 @@
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
-    
+  
 @endsection

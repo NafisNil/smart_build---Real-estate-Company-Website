@@ -9,6 +9,8 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\SocialController;
+use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\FeedbackController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,7 +46,9 @@ Route::middleware('auth')->group(function () {
         'gallery' => GalleryController::class,
         'blog' => BlogController::class,
         'address' => AddressController::class,
-        'social' => SocialController::class
+        'social' => SocialController::class,
+        'partner' => PartnerController::class,
+        'feedback' => FeedbackController::class
     ]);
 });
 
