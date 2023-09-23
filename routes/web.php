@@ -13,6 +13,9 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\GeneralController;
+use App\Http\Controllers\ChooseController;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\AppointmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,11 +29,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('/about-us', [FrontendController::class, 'About'])->name('about_us');
 
+Route::resources([
 
+    'appointment' => AppointmentController::class
+]);
 
 /*Route::get('/dashboard', function () {
     return view('dashboard');
@@ -52,7 +57,9 @@ Route::middleware('auth')->group(function () {
         'partner' => PartnerController::class,
         'feedback' => FeedbackController::class,
         'project' => ProjectController::class,
-        'general' => GeneralController::class
+        'general' => GeneralController::class,
+        'choose' => ChooseController::class,
+      
     ]);
 });
 

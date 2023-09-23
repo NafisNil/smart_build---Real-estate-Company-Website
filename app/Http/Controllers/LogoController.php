@@ -116,7 +116,7 @@ class LogoController extends Controller
         if( $request->hasFile('logo') ) {
             $image = $request->file('logo');
             $filename = time() . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(96, 64)->save('storage/' . $filename);
+            Image::make($image)->resize(128, 32)->save('storage/' . $filename);
             $about->logo = $filename;
             $about->save();
         }

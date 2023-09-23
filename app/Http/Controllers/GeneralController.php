@@ -15,7 +15,7 @@ class GeneralController extends Controller
     public function index()
     {
         //
-        $general = General::orderBy('id', 'desc')->first();
+        $general = General::orderBy('id', 'desc')->get();
         $generalCount = General::count();
          return view('backend.general.index',['general'=>$general,'generalCount'=> $generalCount,]);
     }
@@ -28,6 +28,7 @@ class GeneralController extends Controller
     public function create()
     {
         //
+        return view('backend.general.create');
     }
 
     /**
@@ -36,9 +37,13 @@ class GeneralController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GeneralRequest $request)
     {
         //
+        $general = General::create($request->all());
+       
+       
+        return redirect()->route('general.index')->with('success','Data inserted successfully');
     }
 
     /**
@@ -61,6 +66,9 @@ class GeneralController extends Controller
     public function edit(General $general)
     {
         //
+        return view('backend.general.edit',[
+            'edit' => $general
+        ]);
     }
 
     /**
@@ -70,9 +78,13 @@ class GeneralController extends Controller
      * @param  \App\Models\General  $general
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, General $general)
+    public function update(GeneralRequest $request, General $general)
     {
         //
+        $general->update($request->all());
+       
+       
+        return redirect()->route('general.index')->with('success','Data inserted successfully');
     }
 
     /**
@@ -84,5 +96,7 @@ class GeneralController extends Controller
     public function destroy(General $general)
     {
         //
+        $general->delete();
+        return redirect()->route('general.index')->with('status','Data deleted successfully!');
     }
 }

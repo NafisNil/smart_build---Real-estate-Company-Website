@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="{{route('dashboard')}}" class="brand-link">
       <img src="{{asset('frontend')}}/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">CleanTown</span>
+      <span class="brand-text font-weight-light">Smart Build</span>
     </a>
 
     <!-- Sidebar -->
@@ -163,6 +163,37 @@
               <i class="nav-icon fas fa-th"></i>
               <p>
               Project List
+               
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('general.index')}}" class="nav-link {{$route == 'general.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+              General Information
+               
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('choose.index')}}" class="nav-link {{$route == 'choose.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+              Why you choose that
+               
+              </p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="{{route('appointment.index')}}" class="nav-link {{$route == 'appointment.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+              Appointment List
                
               </p>
             </a>
