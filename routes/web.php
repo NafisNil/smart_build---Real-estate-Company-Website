@@ -16,6 +16,7 @@ use App\Http\Controllers\GeneralController;
 use App\Http\Controllers\ChooseController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,7 +32,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('/about-us', [FrontendController::class, 'About'])->name('about_us');
-
+Route::get('/contact-us', [FrontendController::class, 'Contact'])->name('contact_us');
+Route::get('/team-all', [FrontendController::class, 'Team'])->name('team_all');
+Route::get('/single-service/{id}', [FrontendController::class, 'SingleService'])->name('single_service');
+Route::get('/project-all', [FrontendController::class, 'Project'])->name('project_all');
+Route::get('/blog-all', [FrontendController::class, 'Blog'])->name('blog_all');
+Route::get('/single-project/{id}', [FrontendController::class, 'single_project'])->name('single_project');
+Route::get('/single-blog/{id}', [FrontendController::class, 'single_blog'])->name('single_blog');
 Route::resources([
 
     'appointment' => AppointmentController::class
@@ -59,7 +66,7 @@ Route::middleware('auth')->group(function () {
         'project' => ProjectController::class,
         'general' => GeneralController::class,
         'choose' => ChooseController::class,
-      
+        'team' => TeamController::class,
     ]);
 });
 

@@ -198,6 +198,16 @@
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="{{route('team.index')}}" class="nav-link {{$route == 'team.index'?'active':''}}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+              Team
+               
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -10,7 +10,7 @@
                 <div class="service swiper-slide" data-bg={{(!empty($item->logo))?URL::to('storage/'.$item->logo):URL::to('image/no_image.png')}}>
                    <h2 class="title h1">{{$item->title}}</h2>
                    <p class=text>{{$item->short_desc}}</p>
-                   <a class=btn href=#>service details</a>
+                   <a class=btn href={{route('single_service', $item->id)}}>service details</a>
                 </div>
     
                 @endforeach

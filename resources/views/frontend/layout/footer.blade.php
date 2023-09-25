@@ -19,10 +19,10 @@
           <div class=footer_main-block>
              <h4 class=footer_main-block_title>Company</h4>
              <ul class=footer_main-block_nav>
-                <li class=list-item><a class="nav-link link" href=about.html data-page=about><i class="icon-chevron_right icon"></i> About</a></li>
-                <li class=list-item><a class="nav-link link" href=services.html data-page=services><i class="icon-chevron_right icon"></i> Services</a></li>
-                <li class=list-item><a class="nav-link link" href=projects.html data-page=projects><i class="icon-chevron_right icon"></i> Projects</a></li>
-                <li class=list-item><a class="nav-link link" href=blog.html data-page=blog><i class="icon-chevron_right icon"></i> Blog</a></li>
+                <li class=list-item><a class="nav-link link" href={{route('about_us')}} data-page=about><i class="icon-chevron_right icon"></i> About</a></li>
+                <li class=list-item><a class="nav-link link" href={{route('team_all')}} data-page=services><i class="icon-chevron_right icon"></i> Team</a></li>
+                <li class=list-item><a class="nav-link link" href={{route('project_all')}} data-page=projects><i class="icon-chevron_right icon"></i> Projects</a></li>
+                <li class=list-item><a class="nav-link link" href={{route('blog_all')}} data-page=blog><i class="icon-chevron_right icon"></i> Blog</a></li>
              </ul>
           </div>
   

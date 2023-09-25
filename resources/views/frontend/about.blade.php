@@ -20,13 +20,13 @@
     </div>
     <div class=media>
       <picture>
-        <source data-srcset={{asset('frontend')}}/img/plan.webp srcset={{asset('frontend')}}img/plan.webp type=image/webp>
-        <img class=lazy data-src={{asset('frontend')}}img/plan.png src={{asset('frontend')}}img/plan.png alt=media>
+        <source data-srcset={{asset('frontend')}}/img/plan.webp srcset={{asset('frontend')}}/img/plan.webp type=image>
+        <img class=lazy data-src={{asset('frontend')}}/img/plan.png src={{asset('frontend')}}/img/plan.png alt=media>
       </picture>
     </div>
   </header>
   <main>
-    <section class="about section">
+    <section class="about section light-bg">
       <div class=container>
         <div class=main>
           <div class=section_header>
@@ -37,7 +37,7 @@
      {!!$about->desc!!}
      <br>
           <div class=wrapper data-aos=fade-up>
-            <a class=btn href=#>Consult now</a>
+            <a class=btn href={{route('contact_us')}}#consultancy>Consult now</a>
           </div>
         </div>
         <div class=media data-aos=zoom-in data-aos-duration=700>

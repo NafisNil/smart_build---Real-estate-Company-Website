@@ -6,7 +6,27 @@
 @section('content')
 <main>
     @include('frontend.layout.slider')
-    <section class="partners section">
+    <section class="about primary-bg section">
+      <div class=container>
+         <div class="about_header section_header">
+            <span class=subtitle data-aos=fade-down>About Us</span>
+            <h2 class=title data-aos=fade-right>{{$about->title}}</h2>
+            <p class=text data-aos=fade-in data-aos-duration=700>{!!$about->desc!!}</p>
+           
+            <span class="wrapper d-block" data-aos=fade-right data-aos-delay=50><a class=btn href=#>About company</a></span>
+         </div>
+         <div class=secondary>
+    
+            <div class=media data-aos=zoom-in data-aos-duration=600>
+               <picture>
+                  <source data-srcset={{(!empty($about->logo))?URL::to('storage/'.$about->logo):URL::to('image/no_image.png')}} srcset={{(!empty($about->logo))?URL::to('storage/'.$about->logo):URL::to('image/no_image.png')}} type=image/webp>
+                  <img class=lazy data-src={{(!empty($about->logo))?URL::to('storage/'.$about->logo):URL::to('image/no_image.png')}}  src={{(!empty($about->logo))?URL::to('storage/'.$about->logo):URL::to('image/no_image.png')}}  alt=media>
+               </picture>
+            </div>
+         </div>
+      </div>
+   </section>
+    <section class="partners section secondary-bg">
        <div class=container>
           <div class=partners_grid>
              <div class="partners_header section_header">
@@ -21,27 +41,8 @@
           </div>
        </div>
     </section>
-    <section class="about primary-bg section">
-       <div class=container>
-          <div class="about_header section_header">
-             <span class=subtitle data-aos=fade-down>About Us</span>
-             <h2 class=title data-aos=fade-right>{{$about->title}}</h2>
-             <p class=text data-aos=fade-in data-aos-duration=700>{!!$about->desc!!}</p>
-            
-             <span class="wrapper d-block" data-aos=fade-right data-aos-delay=50><a class=btn href=#>About company</a></span>
-          </div>
-          <div class=secondary>
-     
-             <div class=media data-aos=zoom-in data-aos-duration=600>
-                <picture>
-                   <source data-srcset={{(!empty($about->logo))?URL::to('storage/'.$about->logo):URL::to('image/no_image.png')}} srcset={{(!empty($about->logo))?URL::to('storage/'.$about->logo):URL::to('image/no_image.png')}} type=image/webp>
-                   <img class=lazy data-src={{(!empty($about->logo))?URL::to('storage/'.$about->logo):URL::to('image/no_image.png')}}  src={{(!empty($about->logo))?URL::to('storage/'.$about->logo):URL::to('image/no_image.png')}}  alt=media>
-                </picture>
-             </div>
-          </div>
-       </div>
-    </section>
-    <section class="advantages section-nopb">
+
+    <section class="advantages section-nopb light-bg">
       <div class=container>
          <div class="advantages_header section_header">
             <span class=subtitle data-aos=fade-down>Our Uniqueness</span>
@@ -65,8 +66,10 @@
             </ul>
          </div>
       </div>
+      <br>
    </section>
-    <section class="gallery section">
+  
+    <section class="gallery section primary-bg">
        <div class=container>
           <div class="gallery_header section_header">
              <span class=subtitle>What we do</span>
@@ -94,7 +97,7 @@
        </div>
     </section>
 
-    <section class="feedback section">
+    <section class="feedback section light-bg">
        <div class="container reverse">
           <div class="feedback_header section_header">
              <span class=subtitle>Feedback</span>
@@ -122,7 +125,8 @@
           </div>
        </div>
     </section>
-    <section class="contact section">
+    <section class="contact section secondary-bg">
+      <br>
        <div class=container>
           <div class=contact_wrapper>
              <div class="contact_header section_header">
@@ -146,7 +150,7 @@
             <section class="contact section">
                <div class=container>
                  <div class=main>
-                   <div class="contact_header section_header">
+                   <div class="contact_header section_header" id="contact">
                      <span class=subtitle>Contact us</span>
                      <h2 class=title>Need  <span class=highlight>A Consultancy!</span>
                      </h2>
